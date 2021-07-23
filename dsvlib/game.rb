@@ -1434,6 +1434,9 @@ private
       when "CASTLEVANIA2A2CE"
         suppress_warnings { load './constants/gba_constants.rb' }
         suppress_warnings { load './constants/aos_constants.rb' }
+      when "CASTLEVANIA2A2CJ"    #add cn
+        suppress_warnings { load './constants/gba_constants.rb' }
+        suppress_warnings { load './constants/aos_constants_cn.rb' }
       when "CASTLEVANIA1ACHE"
         suppress_warnings { load './constants/gba_constants.rb' }
         suppress_warnings { load './constants/hod_constants.rb' }

@@ -95,7 +95,7 @@ task :build_releases do
     if program_name.include?("x64")
       zip_path << "_x64"
     end
-    zip_path << ".zip"
+    zip_path << "_cn.zip"
     zip_path = zip_path.tr(" ", "_")
     
     FileUtils.rm_f zip_path
