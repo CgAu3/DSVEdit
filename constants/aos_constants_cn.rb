@@ -166,13 +166,13 @@ ENEMY_DNA_BITFIELD_ATTRIBUTES = {
     "毒",
     "诅咒",
     "石化",
-    "Weakness 10",
-    "Weakness 11",
+    "Unknown 10",
+    "Unknown 11",
     "杀人披风",
-    "Weakness 13",
-    "Weakness 14",
-    "Weakness 15",
-    "Weakness 16",
+    "Unknown 13",
+    "Unknown 14",
+    "Unknown 15",
+    "Unknown 16",
   ],
   "抗性" => [
     "切割",
@@ -184,13 +184,13 @@ ENEMY_DNA_BITFIELD_ATTRIBUTES = {
     "毒",
     "诅咒",
     "石化",
-    "Resistance 10",
+    "Unknown 10",
     "时间静止",
-    "Resistance 12",
-    "Resistance 13",
-    "Resistance 14",
-    "Resistance 15",
-    "Resistance 16",
+    "Unknown 12",
+    "Unknown 13",
+    "Unknown 14",
+    "Unknown 15",
+    "Unknown 16",
   ],
 }
 
@@ -575,13 +575,17 @@ REUSED_SPECIAL_OBJECT_INFO = {
   0x07 => {init_code:         -1},
   0x08 => {init_code: 0x084FC904},
   0x09 => {init_code: 0x084FC904},
+  0x0A => {init_code:         -1},
+  0x0B => {init_code:         -1},
   0x0C => {init_code:         -1},
   0x0E => {init_code: 0x084FCB14}, # destructible
   0x0F => COMMON_SPRITE,
+  0x11 => {init_code:         -1},
   0x12 => {init_code:         -1}, # multiple different background visuals
   0x1C => {palette_offset: 1},
   0x1F => {init_code: 0x080542B4, palette_offset: 2},
   0x20 => {init_code:         -1},
+  0x22 => {palette_offset: 2},
   0x29 => {init_code: 0x084FCDD0, palette_offset: 6},
   0x2A => {init_code: 0x084FCDD0, palette_offset: 6},
   0x2D => {palette_offset: 2},
@@ -602,8 +606,12 @@ BEST_SPRITE_FRAME_FOR_SPECIAL_OBJECT = {
   0x1C => 0x0C,
   0x1D => 0x0B,
   0x1F => 0x0A,
+  0x22 => 0x03,
   0x24 => 0x05,
   0x26 => 0x02,
+  0x27 => 0x02,
+  0x28 => 0x05,
+  0x2B => 0x01,
   0x34 => 0x03,
 }
 BEST_SPRITE_OFFSET_FOR_SPECIAL_OBJECT = {
@@ -617,24 +625,26 @@ OTHER_SPRITES = [
   # (abbandoned) soma's gfx list is around 080E11D8
   # (abbandoned) palette is either 082097D4 (his palette is also the first in 0820B164 but that's not used?)
 
-  # Soma's sprite pointer isn't normal. Using it here like this doesn't show any correct frames or animations, because of the unusual way that Soma is animated by swapping the GFX in VRAM out on the fly while keeping the sprite animation still.
-  # But we put it here anyway just so something can be in the sprite editor, since editing the GFX and palettes in the GFX editor still works fine.
+  # Soma's sprite pointer isn't normal. Using it here wouldn't show any correct frames or animations, because of the unusual way that Soma is animated by swapping the GFX in VRAM out on the fly while keeping the sprite animation still.
+  # So instead we make this a no-sprite sprite so only the GFX and palette show up.
   # Soma's GFX list is at 080E11D4(us), 080DF71C(cn).
-  {desc: "Soma player", sprite: 0x080DF70C, palette: 0x081CF8A0, gfx_files: [0x0813F390, 0x08141394, 0x08143398, 0x0814539C, 0x081473A0, 0x081493A4, 0x0814B3A8, 0x0814D3AC, 0x0814F3B0, 0x081513B4, 0x081533B8, 0x081553B4, 0x081573C0, 0x081593C4, 0x0815B3C8, 0x0815D3CC, 0x0815F3D0, 0x081613D4, 0x081633D8, 0x081653DC, 0x081673E0, 0x081693E4, 0x0816B3E8, 0x0816D3EC, 0x0816F3F0, 0x081713F4, 0x081733F8, 0x081753FC, 0x08177400, 0x08179404, 0x0817B408, 0x0817D40C, 0x0817F410, 0x08181414, 0x08183418, 0x0818541C, 0x08187420]},
+  {desc: "Soma player", sprite: 0x080DF70C, palette: 0x081CF8A0, gfx_files: [0x0813F390, 0x08141394, 0x08143398, 0x0814539C, 0x081473A0, 0x081493A4, 0x0814B3A8, 0x0814D3AC, 0x0814F3B0, 0x081513B4, 0x081533B8, 0x081553B4, 0x081573C0, 0x081593C4, 0x0815B3C8, 0x0815D3CC, 0x0815F3D0, 0x081613D4, 0x081633D8, 0x081653DC, 0x081673E0, 0x081693E4, 0x0816B3E8, 0x0816D3EC, 0x0816F3F0, 0x081713F4, 0x081733F8, 0x081753FC, 0x08177400, 0x08179404, 0x0817B408, 0x0817D40C, 0x0817F410, 0x08181414, 0x08183418, 0x0818541C, 0x08187420], no_sprite: true},
   #us is {desc: "Soma player", sprite: 0x080E11C4, palette: 0x082097D4, gfx_files: [0x081604A8, 0x081624AC, 0x081644B0, 0x081664B4, 0x081684B8, 0x0816A4BC, 0x0816C4C0, 0x0816E4C4, 0x081704C8, 0x081724CC, 0x081744D0, 0x081764D4, 0x081784D8, 0x0817A4DC, 0x0817C4E0, 0x0817E4E4, 0x081804E8, 0x081824EC, 0x081844F0, 0x081864F4, 0x081884F8, 0x0818A4FC, 0x0818C500, 0x0818E504, 0x08190508, 0x0819250C, 0x08194510, 0x08196514, 0x08198518, 0x0819A51C, 0x0819C520, 0x0819E524, 0x081A0528, 0x081A252C, 0x081A4530, 0x081A6534, 0x081A8538]},
   #Julius's GFX list is at 080E12C8(us), 080DF810(cn).
   {desc: "Julius player", sprite: 0x08211868, palette: 0x081D1A88, gfx_files: [0x081C9864, 0x081CA868, 0x081CB86C, 0x081CC870]},
   # us is {desc: "Julius player", sprite: 0x08252748, palette: 0x0820C028, gfx_files: [0x081F42A4, 0x081F52A8, 0x081F62AC, 0x081F72B0]},
 
-  {desc: "Breakable walls 1", pointer: 0x084FC904},
-  {desc: "Breakable walls 2", pointer: 0x084FC910},
-  {desc: "Breakable walls 3", pointer: 0x084FC91C},
-  {desc: "Breakable walls 4", pointer: 0x084FC928},
-  {desc: "Breakable walls 5", pointer: 0x084FC934},
-  {desc: "Breakable walls 6", pointer: 0x084FC940},
-  {desc: "Breakable walls 7", pointer: 0x084FC94C},
-  {desc: "Breakable walls 8", pointer: 0x084FC958},
+  {desc: "Breakable wall graphics 0", pointer: 0x084FC904},
+  {desc: "Breakable wall graphics 1", pointer: 0x084FC910},
+  {desc: "Breakable wall graphics 2", pointer: 0x084FC91C},
+  {desc: "Breakable wall graphics 3", pointer: 0x084FC928},
+  {desc: "Breakable wall graphics 4", pointer: 0x084FC934},
+  {desc: "Breakable wall graphics 5", pointer: 0x084FC940},
+  {desc: "Breakable wall graphics 6", pointer: 0x084FC94C},
+  {desc: "Breakable wall graphics 7", pointer: 0x084FC958},
   
+  COMMON_SPRITE.merge(desc: "Candles", gfx_files: [0x82348F0], no_sprite: true),
+
   {desc: "Destructible 0", pointer: 0x084FCB14},
   {desc: "Destructible 1", pointer: 0x084FCB20},
   {desc: "Destructible 2", pointer: 0x084FCB2C},
@@ -656,26 +666,26 @@ OTHER_SPRITES = [
   
   {desc: "unknown", pointer: 0x084FCDD0},
   {desc: "unknown", pointer: 0x084FCDE0},
-  {desc: "unknown", pointer: 0x084FCDF0},
-  {desc: "unknown", pointer: 0x084FCE00},
+  {desc: "Wet rock moving platform", pointer: 0x084FCDF0},
+  {desc: "Clock moving platform", pointer: 0x084FCE00},
   {desc: "unknown", pointer: 0x084FCE10},
   {desc: "unknown", pointer: 0x084FCE20},
   {desc: "unknown", pointer: 0x084FCE30},
   {desc: "unknown", pointer: 0x084FCE40},
   #{desc: "unknown", pointer: 0x084FCE50}, source is error too
   
-  {desc: "xxxxxx", pointer: 0x080F794C},
-  {desc: "xxxxxx", pointer: 0x080F7958},
+  #{desc: "xxxxxx", pointer: 0x080F794C},
+  #{desc: "xxxxxx", pointer: 0x080F7958},
   {desc: "Mina event actor", pointer: 0x080F7964},
   {desc: "Arikado event actor", pointer: 0x080F7970},
   {desc: "Yoko event actor", pointer: 0x080F797C},
   {desc: "Hammer event actor", pointer: 0x080F7988},
   {desc: "Graham event actor", pointer: 0x080F79A0},
-  {desc: "J", pointer: 0x080F79AC},
-  {desc: "J 2", sprite: 0x08211868, palette: 0x081D1A88, gfx_files: [0x081C9864, 0x081CA868, 0x081CB86C, 0x081CC870]},
-  {desc: "xxxxxx", pointer: 0x080F79C4},
-  {desc: "xxxxxx", pointer: 0x080F79D0},
-  {desc: "xxxxxx", pointer: 0x080F79DC},
+  #{desc: "J", pointer: 0x080F79AC},
+  #{desc: "J 2", sprite: 0x08211868, palette: 0x081D1A88, gfx_files: [0x081C9864, 0x081CA868, 0x081CB86C, 0x081CC870]},
+  #{desc: "xxxxxx", pointer: 0x080F79C4},
+  #{desc: "xxxxxx", pointer: 0x080F79D0},
+  #{desc: "xxxxxx", pointer: 0x080F79DC},
   {desc: "Somacula event actor", pointer: 0x080F79E8},
   
   {desc: "Giant Bat", pointer: 0x080B5C38, gfx_wrapper: 0x080F8694},
@@ -684,7 +694,8 @@ OTHER_SPRITES = [
 
 CANDLE_FRAME_IN_COMMON_SPRITE = 0x1E
 MONEY_FRAME_IN_COMMON_SPRITE = 0x21
-CANDLE_SPRITE = COMMON_SPRITE.merge(palette_offset: 3)
+#CANDLE_SPRITE = COMMON_SPRITE.merge(palette_offset: 3)
+CANDLE_SPRITE = OTHER_SPRITES.find{|spr| spr[:desc] == "Candles"}
 MONEY_SPRITE = COMMON_SPRITE.merge(palette_offset: 2)
 
 WEAPON_GFX_LIST_START = 0x084BCFC8
@@ -864,8 +875,12 @@ TEST_ROOM_AREA_INDEX_LOCATION      = nil
 TEST_ROOM_SECTOR_INDEX_LOCATION    = 0x08002994
 TEST_ROOM_ROOM_INDEX_LOCATION      = 0x08002996
 
-TEST_ROOM_X_POS_LOCATION           = 0x080029B8
-TEST_ROOM_Y_POS_LOCATION           = 0x080029BC
+#TEST_ROOM_X_POS_LOCATION           = 0x080029B8
+#TEST_ROOM_Y_POS_LOCATION           = 0x080029BC
+TEST_ROOM_SCREEN_X_POS_LOCATION    = 0x080029C0
+TEST_ROOM_SCREEN_Y_POS_LOCATION    = 0x080029CC
+TEST_ROOM_X_POS_LOCATION           = 0x080029C8
+TEST_ROOM_Y_POS_LOCATION           = 0x080029CC
 TEST_ROOM_OVERLAY = nil
 
 SHOP_ITEM_POOL_LIST = 0x084FD55C
