@@ -689,6 +689,12 @@ OTHER_SPRITES = [
   {desc: "Somacula event actor", pointer: 0x080F79E8},
   
   {desc: "Giant Bat", pointer: 0x080B5C38, gfx_wrapper: 0x080F8694},
+  {desc: "Graham transformation", gfx_wrapper: 0x080F87D4, palette: 0x0821B7D0, sprite: 0x08225730},
+  {desc: "Graham 2 body", gfx_files: [0x082177C8, 0x082197CC], palette: 0x0821B7D0, sprite: 0x0821C908},
+  {desc: "Graham 2 hands", gfx_files: [0x082177C8, 0x082197CC], palette: 0x0821B7D0, sprite: 0x08224720},
+  #us {desc: "Graham transformation", gfx_wrapper: 0x0811954C, palette: 0x0820C158, sprite: 0x082563DC},
+  #us {desc: "Graham 2 body", gfx_files: [0x081FD2C0, 0x081FF2C4], palette: 0x0820C158, sprite: 0x08254D84},
+  #us {desc: "Graham 2 hands", gfx_files: [0x081FD2C0, 0x081FF2C4], palette: 0x0820C158, sprite: 0x082553CC},
   {desc: "Chaos 2", gfx_wrapper: 0x080F84AC, palette: 0x081D09E7, sprite: 0x08231424},
   {desc: "HUD", gfx_wrapper: 0x081CF890, palette: 0x081D1C58, no_sprite: true},
   #us is {desc: "HUD", gfx_wrapper: 0x0827B208, palette: 0x0820C428, no_sprite: true},
@@ -900,10 +906,12 @@ MAGIC_SEAL_FOR_BOSS_LIST_START = nil
 MENU_BG_LAYER_INFOS = [
   {
     name: "Pause screen",
-    gfx_file_pointers:      [0x0815E02C, 0x0827B200],
-    palette_list_pointer:   0x080E5C20,
-    layer_metadata_pointer: 0x0815E940,
+    gfx_file_pointers:      [0x0813D2B4, 0x081CF878],
+    #us gfx_file_pointers:      [0x0815E02C, 0x0827B200],
+    palette_list_pointer:   0x080E38C0, #us 0x080E5C20,
+    layer_metadata_pointer: 0x0813D8E0, #us 0x0815E940,
   },
+  #TODO: fix the addresses to cn version
   {
     name: "Pause screen (Awakened Soma)",
     gfx_file_pointers:      [0x08264398, 0x0827B200],
@@ -1203,5 +1211,16 @@ MENU_BG_LAYER_INFOS = [
     gfx_file_pointers:      [0x0815E064],
     palette_list_pointer:   0x0815E35C,
     layer_metadata_pointer: 0x0815EDC0,
+  },
+]
+
+#TODO: convert the address to cn ver
+FONTS = [
+  {
+    font_address: 0x0850A136,
+    #I do not actually know what this address is, so I cannot find the cn ver
+    font_data_size: 0xC40,
+    char_width: 8,
+    char_height: 12,
   },
 ]
