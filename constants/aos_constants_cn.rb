@@ -688,6 +688,13 @@ OTHER_SPRITES = [
   #{desc: "xxxxxx", pointer: 0x080F79DC},
   {desc: "Somacula event actor", pointer: 0x080F79E8},
   
+
+  {desc: "Prologue floating castle", gfx_files: [0x080E3864], palette: 0x08237BBC, sprite: 0x08237C74},
+  {desc: "Prologue foreground objects", gfx_files: [0x080E386C], palette: 0x08237BBC, sprite: 0x08238040, palette_offset: 2},
+  #us {desc: "Prologue floating castle", gfx_files: [0x08160490], palette: 0x0820972C, sprite: 0x0820CB60},
+  #us {desc: "Prologue foreground objects", gfx_files: [0x08160498], palette: 0x0820972C, sprite: 0x0820CD00, palette_offset: 2},
+  {desc: "Castle Corridor background bats and clouds", gfx_files: [0x081A6CF8], palette: 0x081CFE38, sprite: 0x081D4370},
+  #us {desc: "Castle Corridor background bats and clouds", gfx_files: [0x081CBE5C], palette: 0x08209EE8, sprite: 0x0820FE44},
   {desc: "Giant Bat", pointer: 0x080B5C38, gfx_wrapper: 0x080F8694},
   {desc: "Graham transformation", gfx_wrapper: 0x080F87D4, palette: 0x0821B7D0, sprite: 0x08225730},
   {desc: "Graham 2 body", gfx_files: [0x082177C8, 0x082197CC], palette: 0x0821B7D0, sprite: 0x0821C908},
@@ -698,6 +705,8 @@ OTHER_SPRITES = [
   {desc: "Chaos 2", gfx_wrapper: 0x080F84AC, palette: 0x081D09E7, sprite: 0x08231424},
   {desc: "HUD", gfx_wrapper: 0x081CF890, palette: 0x081D1C58, no_sprite: true},
   #us is {desc: "HUD", gfx_wrapper: 0x0827B208, palette: 0x0820C428, no_sprite: true},
+  {desc: "Pause menu foreground objects", gfx_files: [0x081CF880], palette: 0x081D1AF0, sprite: 0x08212310, palette_offset: 1},
+  #us is {desc: "Pause menu foreground objects", gfx_files: [0x082052D8], palette: 0x0820C2C0, sprite: 0x08256EF8, palette_offset: 1},
 ]
 
 CANDLE_FRAME_IN_COMMON_SPRITE = 0x1E
